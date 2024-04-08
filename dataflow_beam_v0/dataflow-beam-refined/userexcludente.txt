@@ -1,0 +1,84 @@
+CREATE OR REPLACE TABLE beegdata_dev_trusted.userexcludente(
+  database STRING,
+  user_restrict INTEGER,
+  dateload TIMESTAMP
+)
+
+
+
+INSERT INTO beegdata_dev_trusted.userexcludente (database, user_restrict, dateload)
+VALUES 
+		('beedoo',591001,current_timestamp()),
+		('beedoo',608674,current_timestamp()),
+		('beedoo',612483,current_timestamp()),
+		('beedoo',923411,current_timestamp()),
+		('beedoo',611657,current_timestamp()),
+		('beedoo',735981,current_timestamp()),
+		('beedoo',1139317,current_timestamp()),
+		('beedoo',609632,current_timestamp()),
+		('beedoo',1023055,current_timestamp()),
+		('beedoo',589213,current_timestamp()),
+		('beedoo',609402,current_timestamp()),
+		('beedoo',1121262,current_timestamp()),
+		('beedoo',612484,current_timestamp()),
+		('beedoo',609258,current_timestamp()),
+		('beedoo',775682,current_timestamp()),
+		('beedoo',591003,current_timestamp()),
+		('beedoo',600819,current_timestamp()),
+		('beedoo',979104,current_timestamp()),
+		('beedoo',966271,current_timestamp()),
+		('beedoo',899345,current_timestamp()),
+		('beedoo',995839,current_timestamp()),
+		('beedoo',771014,current_timestamp()),
+		('beedoo',612482,current_timestamp()),
+		('beedoo',684421,current_timestamp()),
+		('beedoo',609666,current_timestamp()),
+		('beedoo',997526,current_timestamp()),
+		('beedoo',1021653,current_timestamp());
+
+SELECT * FROM beegdata_dev_trusted.userexcludente;
+
+
+
+
+###################################################################################################
+query usada para testes
+SELECT 
+user_id, hierarchy_leaderid,u.database,
+  CASE
+    WHEN ur.user_restrict IS NOT NULL THEN 1
+    ELSE 0
+  END restricted_user
+FROM beegdata_dev_refined.dim_user u
+LEFT JOIN beegdata_dev_trusted.userexcludente ur ON u.user_id = ur.user_restrict OR u.hierarchy_leaderid = ur.user_restrict
+where team_id > 0
+and u.hierarchy_leaderid IN(591001,
+608674,
+612483,
+923411,
+611657,
+735981,
+1139317,
+609632,
+1023055,
+589213,
+609402,
+1121262,
+612484,
+609258,
+775682,
+591003,
+600819,
+979104,
+966271,
+899345,
+995839,
+771014,
+612482,
+684421,
+609666,
+997526,
+1021653)
+
+
+

@@ -1,0 +1,14 @@
+setup.py
+beam/__init__.py
+beam/options/__init__.py
+beam/options/raw_options.py
+beam/process/__init__.py
+beam/process/check_json.py
+beam/process/read_kafka.py
+beam/process/to_bq.py
+beam/utils/__init__.py
+beam/utils/tools.py
+luiz.egg-info/PKG-INFO
+luiz.egg-info/SOURCES.txt
+luiz.egg-info/dependency_links.txt
+luiz.egg-info/top_level.txt

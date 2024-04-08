@@ -1,0 +1,74 @@
+%sql
+select 
+count(*), 
+id, 
+database 
+from silver_beeai_preprod.quiz
+group by id, database
+having count(*) > 1
+
+
+
+%sql
+select 
+count(*),
+q_id
+from quiz_users
+
+%sql
+select 
+count(*), 
+id, 
+database 
+from silver_beeai_preprod.quizquestion
+group by id, database
+having count(*) > 1
+
+%sql
+select 
+count(*), 
+id, 
+database 
+from silver_beeai_preprod.quizanswer
+group by id, database
+having count(*) > 1
+
+%sql
+select 
+count(*),
+user_id,
+quizanswer_id, database
+from silver_beeai_preprod.userquizanswer
+group by user_id,
+quizanswer_id, database
+having count(*) > 1
+
+%sql
+select
+  count(*),
+  user_id, database
+from vw_group_name
+group by  user_id, database
+having count(*) > 1
+
+
+%sql
+select 
+count(*), 
+id, 
+database 
+from silver_beeai_preprod.user
+group by id, database
+having count(*) > 1
+
+
+%sql
+select 
+count(*), 
+subordinateid, 
+database 
+from silver_beeai_preprod.hierarchy
+group by subordinateid, database
+having count(*) > 1
+
+

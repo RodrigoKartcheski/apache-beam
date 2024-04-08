@@ -1,0 +1,142 @@
+
+FROM {silver_db_name}.{tableName}
+inner join {silver_db_name}.idiom on idiom_id = idiom.id AND {silver_db_name}.{tableName}.database = idiom.database
+left join {silver_db_name}.hierarchy on subordinateid = {silver_db_name}.{tableName}.id AND {silver_db_name}.{tableName}.database = hierarchy.database
+LEFT JOIN {silver_db_name}.team on team.id = {silver_db_name}.{tableName}.team_id AND {silver_db_name}.{tableName}.database = team.database
+"""
+
+FROM temp_users b 
+LEFT JOIN {silver_db_name}.mood i on b.mood_id = i.id AND B.database = I.database
+LEFT JOIN temp_users e on b.hierarchy_leaderid = e.id AND B.database = E.database
+FROM {silver_db_name}.mood_history as m)
+}.nps_user_answer
+
+##############################################################
+Meu time humor historico
+from {silver_db_name}.mood_history m
+inner join {silver_db_name}.groupuser as gu on gu.user_id = m.user_id AND gu.database = m.database
+inner join {silver_db_name}.group as gp on gp.id = gu.group_id AND gp.database = gu.database
+
+from temp_users u
+left join {silver_db_name}.mood_history m on m.user_id = u.id and m.team_id = u.team_id AND m.database = u.database
+left join {silver_db_name}.mood mm on mm.id = m.mood_id AND mm.database = m.database
+left join temp_users e on u.hierarchy_leaderid = e.id AND u.database = e.database
+left join  vw_group_name as gn on gn.user_id = m.user_id AND gn.database = m.database
+
+from temp_users u
+left join {silver_db_name}.mood_history m on m.user_id = u.id and m.team_id = u.team_id AND m.database = u.database
+left join {silver_db_name}.mood mm on mm.id = m.mood_id AND mm.database = m.database
+left join temp_users e on u.hierarchy_leaderid = e.id AND u.database = e.database
+
+#################
+Meutime_humor_porgrupo
+    from {silver_db_name}.grouping AS GING 
+    inner join {silver_db_name}.groupingoptions AS GINGOPT ON GINGOPT.grouping_id = GING.id AND GINGOPT.database = GING.database
+    inner join {silver_db_name}.groupingvalues AS GINGVAL ON GINGVAL.groupingoption_id = GINGOPT.id and GINGVAL.database = GINGOPT.database
+	
+	    from {silver_db_name}.group g 
+    left join groupings_cte as ging on g.id = ging.groupingvalue_group_id AND g.database = ging.database
+	
+	FROM temp_users b 
+LEFT JOIN {silver_db_name}.mood i on b.mood_id = i.id AND b.database = i.database
+LEFT JOIN temp_users e on b.hierarchy_leaderid = e.id AND b.database = e.database
+left join {silver_db_name}.groupuser c on b.id = c.user_id AND b.database = c.database
+left join vw_group d on c.group_id = d.group_id AND c.database = d.database
+
+
+FROM {silver_db_name}.{tableName}
+inner join {silver_db_name}.idiom on idiom_id = idiom.id AND {silver_db_name}.{tableName}.database = idiom.database
+left join {silver_db_name}.hierarchy on subordinateid = {silver_db_name}.{tableName}.id AND {silver_db_name}.{tableName}.database = hierarchy.database
+LEFT JOIN {silver_db_name}.team on team.id = {silver_db_name}.{tableName}.team_id AND {silver_db_name}.{tableName}.database = team.database
+
+################################################
+Meutime_usuarios
+FROM {silver_db_name}.level
+)
+SELECT * FROM (
+SELECT u.id as user_id, l.team_id, l.name as level_name, u.score as user_score, u.database
+, row_number() over (partition by u.id, u.team_id order by score_next_level desc) as rnb
+FROM cte_level l JOIN temp_users u ON u.team_id = l.team_id
+
+
+Meutime_usuarios_acessos
+FROM {silver_db_name}.useraccess a 
+INNER JOIN temp_users b ON a.user_id = b.id AND b.database = a.database
+INNER JOIN temp_users l ON a.user_id = l.id AND a.database = l.database
+INNER JOIN {silver_db_name}.team c ON c.id = b.team_id AND c.database = b.database
+
+Meutime_usuarios_customizados
+ FROM {silver_db_name }.userfield as userfield
+  INNER JOIN temp_users as user ON user.id = userfield.user_id AND user.database = userfield.database
+  INNER JOIN {silver_db_name }.customfield cf ON cf.id = userfield.customfield_id AND cf.database = userfield.database
+  LEFT JOIN {silver_db_name }.customfieldlist cfl ON cfl.id = userfield.customfieldlist_id AND cfl.database = userfield.database
+  
+  Meutime_usuarios_logados
+  FROM {silver_db_name}.level
+  FROM cte_level l JOIN temp_users u ON u.team_id = l.team_id
+  
+  
+     from {silver_db_name}.grouping AS GING
+    inner join {silver_db_name}.groupingoptions AS GINGOPT ON GINGOPT.grouping_id = GING.id AND GINGOPT.database = GING.database
+    inner join {silver_db_name}.groupingvalues AS GINGVAL ON GINGVAL.groupingoption_id = GINGOPT.id AND GINGVAL.database = GINGOPT.database
+	from temp_users m
+inner join {silver_db_name}.groupuser as gu on gu.user_id = m.id AND gu.database = m.database
+inner join {silver_db_name}.group as gp on gp.id = gu.group_id AND gp.database = gu.database
+
+FROM {silver_db_name}.useraccess a
+INNER JOIN temp_users b ON a.user_id = b.id AND a.database = b.database 
+LEFT JOIN {silver_db_name}.groupuser c ON b.id = c.user_id  AND b.database = c.database
+LEFT JOIN vw_group d ON c.group_id = d.group_id AND c.database = d.database
+LEFT JOIN temp_users e ON b.hierarchy_leaderid = e.id AND e.team_id = b.team_id AND b.database = e.database
+LEFT JOIN {silver_db_name}.uac f ON b.uac_id = f.id AND b.database = f.database
+LEFT JOIN {silver_db_name}.higherbeneathtype g ON b.nid = g.nid AND g.team_id = b.team_id AND b.database = g.database
+LEFT JOIN vw_level h ON b.id = h.user_id AND b.team_id = h.team_id AND b.database = h.database
+LEFT JOIN vw_group_name AS gn ON gn.user_id = a.user_id AND gn.database = a.database
+
+
+
+FROM cte_level l JOIN temp_users u ON u.team_id = l.team_id
+  AND u.score BETWEEN l.score AND l.score_next_level
+  AND u.database = l.database
+  
+      from {silver_db_name}.grouping AS GING
+    inner join {silver_db_name}.groupingoptions AS GINGOPT ON GINGOPT.grouping_id = GING.id AND GINGOPT.database = GING.database
+    inner join {silver_db_name}.groupingvalues AS GINGVAL ON GINGVAL.groupingoption_id = GINGOPT.id  and GINGVAL.database = GINGOPT.database
+	
+	
+	FROM {silver_db_name}.useraccess a
+INNER JOIN temp_users b ON a.user_id = b.id AND a.database = b.database
+LEFT JOIN {silver_db_name}.groupuser c ON b.id = c.user_id AND b.database = c.database
+LEFT JOIN vw_group d ON c.group_id = d.group_id AND c.database = d.database
+LEFT JOIN temp_users e ON b.hierarchy_leaderid = e.id AND e.team_id = b.team_id AND b.database = e.database
+LEFT JOIN {silver_db_name}.uac f ON b.uac_id = f.id AND b.database = f.database
+LEFT JOIN {silver_db_name}.higherbeneathtype g ON b.nid = g.nid AND g.team_id = b.team_id AND b.database = g.database
+LEFT JOIN vw_level h ON b.id = h.user_id AND b.team_id = h.team_id AND b.database = h.database
+LEFT JOIN vw_group_name AS gn ON gn.user_id = a.user_id AND gn.database = a.database
+
+
+
+################
+
+    from {silver_db_name}.grouping AS GING
+    inner join {silver_db_name}.groupingoptions AS GINGOPT ON GINGOPT.grouping_id = GING.id AND GINGOPT.database = GING.database
+    inner join {silver_db_name}.groupingvalues AS GINGVAL ON GINGVAL.groupingoption_id = GINGOPT.id AND GINGVAL.database = GINGOPT.database
+    from {silver_db_name}.group g 
+    left join groupings_cte as ging on g.id = ging.groupingvalue_group_id AND g.database = ging.database
+	
+	
+
+FROM
+  temp_users b
+LEFT JOIN
+  {silver_db_name}.groupuser c  ON b.id = c.user_id AND b.database = c.database
+LEFT JOIN 
+  vw_group d ON c.group_id = d.group_id AND c.database = d.database
+LEFT JOIN 
+  temp_users e ON b.hierarchy_leaderid = e.id AND b.database = e.database
+LEFT JOIN 
+  {silver_db_name}.uac f ON b.uac_id = f.id AND b.database = f.database
+LEFT JOIN
+  {silver_db_name}.higherbeneathtype g ON b.nid = g.nid AND b.team_id = g.team_id AND b.database = g.database
+LEFT JOIN
+  vw_level h ON b.id = h.user_id AND b.team_id = h.team_id AND b.database = h.database

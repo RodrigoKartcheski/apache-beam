@@ -1,0 +1,60 @@
+FROM ubuntu:20.04
+MAINTAINER seuemail@email.com
+
+ENV AIRFLOW_HOME=/usr/local/airflow
+
+# Instale as dependências do sistema
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    libpq-dev \
+    && apt-get clean
+
+# Install wget
+RUN apt-get install -y wget
+
+# Install Python 3.8 and pip for Python 3.8
+RUN apt-get install -y python3.8 python3.8-distutils
+RUN wget https://bootstrap.pypa.io/get-pip.py
+RUN python3.8 get-pip.py
+
+# Copy the requirements file
+COPY requirements.txt .
+
+# Defina o diretório de trabalho
+WORKDIR /usr/src/airflow
+
+# Instale as dependências do sistema
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libssl-dev \
+    libffi-dev \
+    libpq-dev \
+    && apt-get clean
+
+# Instale o Apache Airflow com suporte a extras adicionais
+RUN pip install apache-airflow[postgres,redis,crypto]
+
+# Defina algumas variáveis de ambiente para o Airflow
+ENV AIRFLOW_HOME=/usr/src/airflow
+ENV AIRFLOW__CORE__EXECUTOR=LocalExecutor
+ENV AIRFLOW__CORE__SQL_ALCHEMY_CONN=sqlite:////usr/src/airflow/airflow.db
+
+# Inicialize o banco de dados do Airflow
+RUN airflow db init
+
+# Crie o primeiro usuário (substitua os valores conforme necessário)
+RUN airflow users create \
+    --username admin \
+    --firstname John \
+    --lastname Doe \
+    --role Admin \
+    --email admin@example.com \
+    --password admin
+
+# Expõe a porta do servidor web do Airflow
+EXPOSE 8080
+
+# Inicie o webserver do Airflow
+CMD ["airflow", "webserver", "-p", "8080"]

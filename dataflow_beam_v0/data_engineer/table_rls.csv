@@ -1,0 +1,3 @@
+owner|project_id|dataset_id|dataset_schema|table_id|police_name|grant_to|filter_using|valido
+Mapfre|focus-mechanic-321819|beegdata_prod_mapfre|beedoo_prod_views|user|Rls_6|"""user:beegdata.mapfre@beedoo.com.br"",""serviceAccount:mapfre-beegdata@focus-mechanic-321819.iam.gserviceaccount.com"""|(database = 'beedoo' and team_id IN(749)) or (database = 'mapfre' and team_id in(253))|database = 'beedoo' and team_id IN (260)
+Mapfre|focus-mechanic-321819|beegdata_prod_mapfre|beedoo_prod_views|team|Rls_7|"""user:beegdata.mapfre@beedoo.com.br"",""serviceAccount:mapfre-beegdata@focus-mechanic-321819.iam.gserviceaccount.com"""|(database = 'beedoo' and id IN(253)) or (database = 'mapfre' and id in(253))|
