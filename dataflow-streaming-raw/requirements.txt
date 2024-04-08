@@ -1,0 +1,5 @@
+kafka-python==2.0.2
+beam-nuggets
+pandas
+gcsfs
+fsspec

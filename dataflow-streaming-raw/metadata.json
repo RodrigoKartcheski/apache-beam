@@ -1,0 +1,16 @@
+{
+    "name": "beedoo raw",
+    "description": "Pipeline para a ingestão da raw",
+    "parameters": [
+      {
+        "name": "dataset",
+        "label": "Dataset that we will use",
+        "helpText": "Dataset that we will use to upload the temporary file"
+      },
+      {
+        "name": "path_to_raw_controller",
+        "label": "Path to raw controller that we will use",
+        "helpText": "Path to raw controller that we will use to upload the temporary file"
+      }
+    ]
+} 
