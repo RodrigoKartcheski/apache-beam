@@ -1,0 +1,8 @@
+target_table_name,load_controller,field_mapping
+raw_user,1,"[('SK_MATERIAL', 'NUMBER'),
+('DS_MATERIAL', 'VARCHAR2'),
+('CD_MATERIAL', 'VARCHAR2'),
+('SK_CLASSE_MATERIAL', 'NUMBER'),
+('SK_GRUPO_MERCADORIA', 'NUMBER'),
+('TP_MATERIAL', 'VARCHAR2'),
+('SK_MATERIAL_PEDIDO', 'NUMBER')]"
